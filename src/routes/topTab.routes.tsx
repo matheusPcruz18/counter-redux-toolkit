@@ -14,8 +14,8 @@ export function TopTabRoutes() {
             color: "#fff"
         }
     }}>
-      <Tab.Screen name="Counter" component={Counter} options={{ title: "Counter" }} />
       <Tab.Screen name="Pokedex" component={Pokedex} options={{ title: "Pokedex" }} />
+      <Tab.Screen name="Counter" component={Counter} options={{ title: "Counter" }} />
     </Tab.Navigator>
   );
 }
