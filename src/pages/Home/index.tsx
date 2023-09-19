@@ -2,8 +2,10 @@ import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import React, {Component, useState} from 'react';
 import Button from '../../components/Button';
 import { useAppDispatch } from '../../store/hooks/useAppDispatch';
-import { counterDecrement, counterIncreaseIfOdd, counterIncrement, counterReset, counterincrementByAmount } from '../../store/counter/actions';
+// import { counterDecrement, counterIncreaseIfOdd, counterIncrement, counterReset, counterincrementByAmount } from '../../store/counter/actions';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { counterSlice } from '../../store/counter/slice';
+import { counterIncrementAsync } from '../../store/counter/thunks/counterIncrementAsync';
 
 function Home(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,12 +26,12 @@ function Home(): JSX.Element {
       </Text>
 
       <View style={styles.row}>
-        <Button onBtnPress={() => dispatch(counterIncrement())} label='Increase' />
-        <Button onBtnPress={() => dispatch(counterDecrement())} label='Descrease' />
-        <Button onBtnPress={() => dispatch(counterIncrement())} label='Async' />
-        <Button onBtnPress={() => dispatch(counterincrementByAmount(5))} label='By five' />
-        <Button onBtnPress={() => dispatch(counterIncreaseIfOdd())} label='Iff odd' />
-        <Button onBtnPress={() => dispatch(counterReset())} label='Clear' />
+        <Button onBtnPress={() => dispatch(counterSlice.actions.counterIncrement())} label='Increase' />
+        <Button onBtnPress={() => dispatch(counterSlice.actions.counterDecrement())} label='Descrease' />
+        <Button onBtnPress={() => dispatch(counterIncrementAsync(1))} label='Async' />
+        <Button onBtnPress={() => dispatch(counterSlice.actions.counterincrementByAmount(5))} label='By five' />
+        <Button onBtnPress={() => dispatch(counterSlice.actions.counterIncrementIfOdd(1))} label='Iff odd' />
+        <Button onBtnPress={() => dispatch(counterSlice.actions.counterReset())} label='Clear' />
       </View>
     </View>
   );

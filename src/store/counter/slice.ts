@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {counterInitialState} from './initialState';
+import {incrementAsyncBuilder} from './thunks/counterIncrementAsync';
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -17,11 +18,13 @@ export const counterSlice = createSlice({
     counterReset(state) {
       state.counter = 0;
     },
-    counterIncreaseIfOdd(state) {
-      if(Number(state.counter) % 2 !== 0){
-        state.counter += 1;
+    counterIncrementIfOdd(state, action) {
+      if (state.counter % 2 === 1) {
+        state.counter += action.payload;
       }
-    }
+    },
   },
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    incrementAsyncBuilder(builder);
+  },
 });
