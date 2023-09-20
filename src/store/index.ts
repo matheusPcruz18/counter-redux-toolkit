@@ -11,5 +11,5 @@ export const store = configureStore({
     [pokedexApi.reducerPath]: pokedexApi.reducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(pokedexApi.middleware),
+    getDefaultMiddleware({serializableCheck: false}).concat(pokedexApi.middleware),
 });

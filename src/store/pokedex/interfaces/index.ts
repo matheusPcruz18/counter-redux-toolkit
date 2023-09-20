@@ -13,6 +13,7 @@ interface Stat {
 }
 
 interface Type {
+  name: string;
   slot: number;
   type: {
     name: string; // O nome do tipo pode ser uma string, ajuste conforme necessário
@@ -27,4 +28,8 @@ export interface Pokemon {
   weight: number;
   stats: Stat[];
   types: Type[];
+  sprites: {
+    front_default: string;
+    back_default: string;
+  }
 }

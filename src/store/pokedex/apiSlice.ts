@@ -9,6 +9,7 @@ export const pokedexApi = createApi({
       query: name => `/pokemon/${name}`,
     }),
   }),
+  keepUnusedDataFor: 120,
 });
 
 export const { useGetPokemonByNameQuery } = pokedexApi;

@@ -12,6 +12,7 @@ function Counter(): JSX.Element {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Using the Redux Toolkit for manage all the counter states and updates</Text>
       {loading ? (
         <ActivityIndicator size="large" color="#fff" />
       ) : (
@@ -60,9 +61,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#181818',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: 16,
+    paddingVertical: 30,
     gap: 20,
+  },
+  title: {
+    fontSize: 22,
+    textAlign: 'center',
+    color: '#fff',
+    fontWeight: "bold"
   },
   currentValue: {
     fontSize: 92,
