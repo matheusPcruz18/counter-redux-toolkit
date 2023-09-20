@@ -1,22 +1,16 @@
-import React, {Component, Fragment, useEffect, useMemo, useState} from 'react';
+import React, { Fragment, useEffect, useMemo, useState} from 'react';
 import {
   ActivityIndicator,
-  Button,
   Image,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
-import {useAppSelector} from '../../store/hooks/useAppSelector';
-import {useAppDispatch} from '../../store/hooks/useAppDispatch';
-import {pokemonSlice} from '../../store/pokedex/slice';
 import {useGetPokemonByNameQuery} from '../../store/pokedex/apiSlice';
 import SelectDropdown from 'react-native-select-dropdown';
 import {pokemons_from_kanto} from '../../utils/pokemons';
 
 function Pokedex(): JSX.Element {
-  const dispatch = useAppDispatch();
   const [selectedPokemon, setSelectedPokemon] = useState('pikachu');
   const {data, error, isLoading, refetch, isFetching} =
     useGetPokemonByNameQuery(selectedPokemon);
